@@ -8,58 +8,40 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users_details")
+@Table(name = "user")
 public class User {
 
 	@Id
 	@Column
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int user_id;
 
 	@Column
-	private String name;
+	private String user_name;
 
 	@Column
 	private String email;
 
 	@Column
-	private int contactNo;
-
-	@Column
-	private String company;
-
-	@Column
-	private String Designation;
+	private int contact;
 
 	@Column
 	private String password;
 
-	@Column
-	private String intrest;
-
-	@Column
-	private String f_url;
-
-	@Column
-	private String g_url;
-
-	@Column
-	private String t_url;
-
-	public int getId() {
-		return id;
+	public int getUser_id() {
+		return user_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setUser_id(int user_id) {
+		this.user_id = user_id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUser_name() {
+		return user_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 	public String getEmail() {
@@ -70,28 +52,12 @@ public class User {
 		this.email = email;
 	}
 
-	public int getContactNo() {
-		return contactNo;
+	public int getContact() {
+		return contact;
 	}
 
-	public void setContactNo(int contactNo) {
-		this.contactNo = contactNo;
-	}
-
-	public String getCompany() {
-		return company;
-	}
-
-	public void setCompany(String company) {
-		this.company = company;
-	}
-
-	public String getDesignation() {
-		return Designation;
-	}
-
-	public void setDesignation(String designation) {
-		Designation = designation;
+	public void setContact(int contactNo) {
+		this.contact = contactNo;
 	}
 
 	public String getPassword() {
@@ -102,43 +68,11 @@ public class User {
 		this.password = password;
 	}
 
-	public String getIntrest() {
-		return intrest;
-	}
-
-	public void setIntrest(String intrest) {
-		this.intrest = intrest;
-	}
-
-	public String getF_url() {
-		return f_url;
-	}
-
-	public void setF_url(String f_url) {
-		this.f_url = f_url;
-	}
-
-	public String getG_url() {
-		return g_url;
-	}
-
-	public void setG_url(String g_url) {
-		this.g_url = g_url;
-	}
-
-	public String getT_url() {
-		return t_url;
-	}
-
-	public void setT_url(String t_url) {
-		this.t_url = t_url;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", contactNo=" + contactNo + ", company="
-				+ company + ", Desigination=" + Designation + ", password=" + password + ", intrest=" + intrest
-				+ ", f_url=" + f_url + ", g_url=" + g_url + ", t_url=" + t_url + "]";
+		return "User [user_id=" + user_id + ", user_name=" + user_name + ", email=" + email + ", contactNo=" + contact
+				+ ", password=" + password + "]";
 	}
 
+	
 }

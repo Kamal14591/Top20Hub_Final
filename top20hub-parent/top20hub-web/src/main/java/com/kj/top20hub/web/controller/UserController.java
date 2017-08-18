@@ -2,22 +2,23 @@ package com.kj.top20hub.web.controller;
 
 import java.util.List;
 
+import javax.ws.rs.Path;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
-
-import com.kj.top20hub.bo.ContactUsBO;
+import org.springframework.web.bind.annotation.RestController;
 import com.kj.top20hub.bo.UserBO;
 import com.kj.top20hub.dao.ContactUsDAO;
 import com.kj.top20hub.dto.ContactUs;
 import com.kj.top20hub.dto.User;
 
 
-@Controller
+@RestController
 @RequestMapping("/users")
 public class UserController {
 	
@@ -28,16 +29,22 @@ public class UserController {
 	private ContactUsDAO contactUsService;
 	
 	
-	@RequestMapping("/list")
-	public String listUsers(Model theModel)
+	@GetMapping("/list")
+	public List<User> listUsers()
 	{
-		
 		List<User> users = userService.getAllUsers();
-		
-		theModel.addAttribute("users",users);
-		
-		return "users_details";
+		return users;
 	}
+	
+	@GetMapping("/list/{id}")
+	public User getUser(@PathVariable int id)
+	{
+		User user = userService.getUser(id);
+		
+		return user;
+		
+	}
+	
 	
 	@RequestMapping("/contactUs")
 	public String contactUs(Model theModel)
@@ -65,13 +72,11 @@ public class UserController {
 		return "contactUsMessages";
 	}
 	
-	@RequestMapping("/contactus/messages")
-	public String contactUsMsg(Model theModel)
+	@GetMapping("/contactus/messages")
+	public List<ContactUs> contactUsMsg()
 	{
-		
 		List<ContactUs> contactUs = contactUsService.getAllMessages();
-		theModel.addAttribute("Messages", contactUs);
-		return "messages";
+		return contactUs;
 		
 	}
 

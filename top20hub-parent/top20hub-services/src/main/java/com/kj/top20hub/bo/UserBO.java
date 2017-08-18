@@ -8,5 +8,6 @@ public interface UserBO {
 	
 
 	public List<User> getAllUsers();
+	User getUser(int id);
 	
 }

@@ -22,6 +22,14 @@ public class UserBOImpl implements UserBO {
 		List<User> user = userDao.getAlluser();
 		return user;
 	}
+	
+	@Override
+	@Transactional
+	public User getUser(int id)
+	{
+		User user = userDao.getUser(id);
+		return user;
+	}
 
 	
 }
