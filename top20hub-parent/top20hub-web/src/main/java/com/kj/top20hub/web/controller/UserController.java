@@ -2,8 +2,6 @@ package com.kj.top20hub.web.controller;
 
 import java.util.List;
 
-import javax.ws.rs.Path;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,18 +27,17 @@ public class UserController {
 	private ContactUsDAO contactUsService;
 	
 	
-	@GetMapping("/list")
+	@GetMapping("/")
 	public List<User> listUsers()
 	{
 		List<User> users = userService.getAllUsers();
 		return users;
 	}
 	
-	@GetMapping("/list/{id}")
+	@GetMapping("/{id}")
 	public User getUser(@PathVariable int id)
 	{
 		User user = userService.getUser(id);
-		
 		return user;
 		
 	}
