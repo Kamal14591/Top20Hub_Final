@@ -39,5 +39,34 @@ public class UserDaoImpl implements UserDAO {
 		return user;
 
 	}
+	
+	@Override
+	public int createUser(User user)
+	{
+		Session curSession = null;
+		curSession = sessionFactory.getCurrentSession();
+		int result = (int) curSession.save(user);
+		return result;
+		
+	}
+
+	@Override
+	public void updateUser(User user) {
+
+		Session curSession = null;
+		curSession = sessionFactory.getCurrentSession();
+		curSession.update(user);
+	}
+
+	@Override
+	public void deleteUser(int id) {
+
+		Session curSession = null;
+		curSession = sessionFactory.getCurrentSession();
+		
+		User user = curSession.get(User.class,id);
+		
+		 curSession.delete(user);
+	}
 
 }
