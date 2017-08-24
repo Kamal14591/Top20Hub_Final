@@ -30,6 +30,8 @@ public class User {
 
 	@Column
 	private String password;
+	
+	
 
 	public int getUser_id() {
 		return user_id;
