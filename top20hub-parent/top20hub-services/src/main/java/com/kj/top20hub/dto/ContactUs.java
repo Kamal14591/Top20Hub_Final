@@ -1,5 +1,7 @@
 package com.kj.top20hub.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +13,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name="contact_us")
-public class ContactUs {
+public class ContactUs implements Serializable{
 	
 	
 	@Id

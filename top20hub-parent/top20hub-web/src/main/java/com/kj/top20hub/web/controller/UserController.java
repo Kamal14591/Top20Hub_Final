@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.kj.top20hub.bo.UserBO;
 import com.kj.top20hub.dao.ContactUsDAO;
 import com.kj.top20hub.dto.ContactUs;
@@ -30,14 +31,14 @@ public class UserController {
 	private ContactUsDAO contactUsService;
 	
 	
-	@GetMapping("/")
+	@GetMapping(value="/")
 	public List<User> listUsers()
 	{
 		List<User> users = userService.getAllUsers();
 		return users;
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping(value="/{id}")
 	public User getUser(@PathVariable int id)
 	{
 		User user = userService.getUser(id);
@@ -45,14 +46,14 @@ public class UserController {
 		
 	}
 	
-	@PostMapping("/createUser")
+	@PostMapping(value="/createUser")
 	public int creatUser(@RequestBody User user)
 	{
 		int result = userService.createUser(user);
 		return result;
 	}
 	
-	@PutMapping("/updateUser")
+	@PutMapping(value="/updateUser")
 	public void updateUser(@RequestBody User user)
 	{
 		int id = user.getUser_id();
@@ -60,7 +61,7 @@ public class UserController {
 		
 	}
 	
-	@DeleteMapping("/deleteUser/{id}")
+	@DeleteMapping(value="/deleteUser/{id}")
 	public void deleteUser(@PathVariable int id)
 	{
 		userService.deleteUser(id);
@@ -79,7 +80,7 @@ public class UserController {
 		return "contact_page";
 	}
 	
-	@PostMapping("/saveContactUs")
+	@PostMapping(value="/saveContactUs")
 	public String SaveContactUsMsg(@ModelAttribute("contactUs") ContactUs contactUs)
 	{
 		
@@ -88,14 +89,14 @@ public class UserController {
 		return "redirect:/users/contactus/messages";
 	}
 	
-	@RequestMapping("/contactUsMessages")
+	@RequestMapping(value="/contactUsMessages")
 	public String contactUsMessages()
 	{
 		
 		return "contactUsMessages";
 	}
 	
-	@GetMapping("/contactus/messages")
+	@GetMapping(value="/contactus/messages")
 	public List<ContactUs> contactUsMsg()
 	{
 		List<ContactUs> contactUs = contactUsService.getAllMessages();

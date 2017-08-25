@@ -1,5 +1,7 @@
 package com.kj.top20hub.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,9 +9,16 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.GenericGenerator;
+
 	@Entity
 	@Table(name = "user_details")
-	public class UserDetails {
+	public class UserDetails  implements Serializable{
+
+	/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column
@@ -29,10 +38,29 @@ import javax.persistence.Table;
 	private String t_id;
 	
 	@Column
+	private String i_id;
+	
+	@Column
 	private int rating;
 	
 	@Column
 	private String image_url;
+	
+	public UserDetails()
+	{
+		
+	}
+
+	public UserDetails(String company, String designation, String f_id, String t_id, String i_id, int rating,
+			String image_url) {
+		this.company = company;
+		this.designation = designation;
+		this.f_id=f_id;
+		this.t_id = t_id;
+		this.i_id = i_id;
+		this.rating = rating;
+		this.image_url = image_url;
+	}
 
 	public int getUser_details_id() {
 		return user_details_id;
@@ -89,5 +117,14 @@ import javax.persistence.Table;
 	public void setImage_url(String image_url) {
 		this.image_url = image_url;
 	}
+
+	public String getI_id() {
+		return i_id;
+	}
+
+	public void setI_id(String i_id) {
+		this.i_id = i_id;
+	}
+	
 
 }

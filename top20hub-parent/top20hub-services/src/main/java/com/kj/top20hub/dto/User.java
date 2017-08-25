@@ -1,22 +1,31 @@
 package com.kj.top20hub.dto;
 
+import java.io.Serializable;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column
-	@GenericGenerator(name="kaugen" , strategy="increment")
-	@GeneratedValue(generator="kaugen")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int user_id;
 
 	@Column
@@ -31,7 +40,44 @@ public class User {
 	@Column
 	private String password;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="user_details")
+	UserDetails userDetails;
 	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="user_interest")
+	UserInterest userIntrest;
+	
+	public User()
+	{
+		
+	}
+
+	public User(String user_name, String email, int contact, String passowrd) {
+
+			this.user_name = user_name;
+			this.email = email;
+			this.contact = contact;
+			this.password = passowrd;
+		
+	
+	}
+
+	public UserDetails getUserDetails() {
+		return userDetails;
+	}
+
+	public void setUserDetails(UserDetails userDetails) {
+		this.userDetails = userDetails;
+	}
+
+	public UserInterest getUserIntrest() {
+		return userIntrest;
+	}
+
+	public void setUserIntrest(UserInterest userIntrest) {
+		this.userIntrest = userIntrest;
+	}
 
 	public int getUser_id() {
 		return user_id;
@@ -75,8 +121,8 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [user_id=" + user_id + ", user_name=" + user_name + ", email=" + email + ", contactNo=" + contact
-				+ ", password=" + password + "]";
+		return "User [user_id=" + user_id + ", user_name=" + user_name + ", email=" + email + ", contact=" + contact
+				+ ", password=" + password + ", userDetails=" + userDetails + ", userIntrest=" + userIntrest + "]";
 	}
 
 	
