@@ -9,5 +9,5 @@ public interface UserBO {
 	User getUser(int id);
 	int createUser(User user);
 	public void updateUser(User user);
-	public void deleteUser(int id);
+	public User deleteUser(int id);
 }

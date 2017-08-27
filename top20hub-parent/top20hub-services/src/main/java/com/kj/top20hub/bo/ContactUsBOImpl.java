@@ -8,15 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 import com.kj.top20hub.dao.ContactUsDAO;
 import com.kj.top20hub.dto.ContactUs;
 
-public class ContactUsDAOImpl implements ContactUsBO {
+public class ContactUsBOImpl implements ContactUsBO {
 
 	@Autowired
 	ContactUsDAO contactUsDAO;
 	
 	@Override
 	@Transactional
-	public void create(ContactUs contactUs) {
-		contactUsDAO.create(contactUs);
+	public int create(ContactUs contactUs) {
+		return contactUsDAO.create(contactUs);
 	}
 
 	@Override

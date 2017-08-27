@@ -68,7 +68,7 @@ public class UserDaoImpl implements UserDAO {
 	}
 
 	@Override
-	public void deleteUser(int id) {
+	public User deleteUser(int id) {
 
 		Session curSession = null;
 		curSession = sessionFactory.getCurrentSession();
@@ -76,6 +76,8 @@ public class UserDaoImpl implements UserDAO {
 		User user = curSession.get(User.class,id);
 		
 		 curSession.delete(user);
+		 
+		 return user;
 	}
 
 }

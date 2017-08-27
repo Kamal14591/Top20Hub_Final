@@ -34,8 +34,7 @@ public class UserBOImpl implements UserBO {
 	@Override
 	@Transactional
 	public int createUser(User user) {
-		int result = userDao.createUser(user);
-		return result;
+		return userDao.createUser(user);
 	}
 
 	@Override
@@ -47,10 +46,8 @@ public class UserBOImpl implements UserBO {
 
 	@Override
 	@Transactional
-	public void deleteUser(int id) {
-		
-		userDao.deleteUser(id);
-		
+	public User deleteUser(int id) {
+		return userDao.deleteUser(id);
 	}
 
 	

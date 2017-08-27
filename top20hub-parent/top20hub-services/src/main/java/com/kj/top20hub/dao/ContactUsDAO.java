@@ -6,7 +6,7 @@ import com.kj.top20hub.dto.ContactUs;
 
 public interface ContactUsDAO {
 	
-	public void create(ContactUs contactUs);
+	public int create(ContactUs contactUs);
 
 	public List<ContactUs> getAllMessages();
 

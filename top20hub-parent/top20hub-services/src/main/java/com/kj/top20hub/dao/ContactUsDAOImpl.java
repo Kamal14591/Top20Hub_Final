@@ -19,12 +19,12 @@ public class ContactUsDAOImpl implements ContactUsDAO{
 	
 	@Override
 	@Transactional
-	public void create(ContactUs contactUs) {
+	public int create(ContactUs contactUs) {
 
 		Session currentSession = null;
 		
 		currentSession = sessionFactory.getCurrentSession();
-		currentSession.save(contactUs);
+		return (int) currentSession.save(contactUs);
 	}
 
 	@Override
