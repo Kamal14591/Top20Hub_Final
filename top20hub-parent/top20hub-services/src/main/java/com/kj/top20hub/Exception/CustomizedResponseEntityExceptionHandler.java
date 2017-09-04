@@ -16,17 +16,17 @@ import javassist.NotFoundException;
 @RestController 
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler{
 	
-	@ExceptionHandler(UserNotFoundException.class)
+/*	@ExceptionHandler(UserNotFoundException.class)
 	public final ResponseEntity<Object> handleUserNotFoundException(NotFoundException ex, WebRequest request) {
 		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
 		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.NOT_FOUND);
+	}*/
+	
+	
+	@ExceptionHandler(Exception.class)
+		public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) {
+		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
+		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
 	}
-	
-	
-//	@ExceptionHandler(Exception.class)
-//	public final ResponseEntity<Object> handleAllException(Exception ex, WebRequest request) {
-//		ExceptionResponse exceptionResponse = new ExceptionResponse(new Date(), ex.getMessage(), request.getDescription(false));
-//		return new ResponseEntity<Object>(exceptionResponse, HttpStatus.INTERNAL_SERVER_ERROR);
-//	}
 	
 }

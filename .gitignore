@@ -24,3 +24,14 @@ hs_err_pid*
 
 /top20hub-services/target/
 /top20hub-web/target/
+
+/top20hub-web/.settings
+/top20hub-web/.classpath
+/top20hub-web/.project
+
+/top20hub-services/.settings
+/top20hub-services/.classpath
+/top20hub-services/.project
+
+/top20hub-parent/.project
+/top20hub-parent/.settings
